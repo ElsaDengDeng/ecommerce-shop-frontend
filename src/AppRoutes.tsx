@@ -11,6 +11,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import AddCategory from "./components/admin/AddCategory";
 import AddProduct from "./components/admin/AddProduct";
 import Product from "./components/core/Product";
+import Cart from './components/core/Cart';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const AppRoutes: React.FC = () => {
         <AdminRoute path="/create/product" component={AddProduct} />
         {/* <AdminRoute path="/admin/orders" component={Orders} /> */}
         <Route path="/product/:productId" component={Product} />
+        <Route path="/cart" component={Cart} />
       </Switch>
     </HashRouter>
   );

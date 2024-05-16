@@ -1,5 +1,7 @@
 ## 踩坑日记
 
+
+
 第一： 使用 React-router-dom 和 connected-react-router 时，
 包里面依赖 History 包，里面用到了 window.history 接口
 
@@ -16,6 +18,13 @@ TypeError: Cannot read properties of undefined (reading 'pathname')
 比如： react-router-dom@5 中引用的事 History
 
 而react-router-dom@6 中引用的是  window.history 接口
+
+### 支付宝测试账号
+
+ graveq3405@sandbox.com
+ 111111
+
+无域名
 
 ## 电商项目说明
 

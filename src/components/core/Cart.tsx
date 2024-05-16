@@ -3,6 +3,8 @@ import { CartItem, getCart } from "../../helpers/cart";
 import Layout from "./Layout";
 import { Col, Divider, Input, Row } from "antd";
 import CartItemFc from "./CartItemFc";
+import TotalPrice from "./TotalPrice";
+import Pay from "./Pay";
 
 const Cart = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -43,12 +45,15 @@ const Cart = () => {
                     onChange={(event: ChangeEvent<HTMLInputElement>) =>
                         setAddress(event.target.value)
                     }
-                    placeholder=""
+                    placeholder="请输入收货地址"
                  />
             </Row>
             <Divider />
+            <Row >
+                <TotalPrice cart={cart} setTotalPrice={setTotalPrice}></TotalPrice>
+            </Row>
             <Row>
-                
+              <Pay totalPrice={totalPrice} cart={cart} address={address}></Pay>
             </Row>
         </Col>
       </Row>

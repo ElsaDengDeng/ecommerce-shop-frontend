@@ -18,7 +18,7 @@ interface Props {
   showViewProduct?: boolean;
   showCartBtn?: boolean;
 }
-const ProductItem: FC<Props> = ({ product, showViewProduct, showCartBtn }) => {
+const ProductItem: FC<Props> = ({ product, showViewProduct = true, showCartBtn= true }) => {
   const dispatch = useAppDispatch()
   const addToCart = () => {
     addItem(product, () => {
@@ -69,7 +69,7 @@ const ProductItem: FC<Props> = ({ product, showViewProduct, showCartBtn }) => {
           {moment(product.createdAt).format('YYYY-MM-DD')}
         </Col>
         <Col span="12" style={{ textAlign: 'right' }}>
-          <FormattedMessage id="productCategory" />: {product.category.name}
+          <FormattedMessage id="productCategory" />: {product.category?.name}
         </Col>
       </Row>
     </Card>
