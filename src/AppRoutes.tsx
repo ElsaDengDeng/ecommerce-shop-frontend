@@ -12,6 +12,8 @@ import AddCategory from "./components/admin/AddCategory";
 import AddProduct from "./components/admin/AddProduct";
 import Product from "./components/core/Product";
 import Cart from './components/core/Cart';
+import Success from './components/core/Success';
+import Orders from './components/core/Order';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -25,9 +27,10 @@ const AppRoutes: React.FC = () => {
         <AdminRoute path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute path="/create/category" component={AddCategory} />
         <AdminRoute path="/create/product" component={AddProduct} />
-        {/* <AdminRoute path="/admin/orders" component={Orders} /> */}
+        <AdminRoute path="/admin/orders" component={Orders} />
         <Route path="/product/:productId" component={Product} />
         <Route path="/cart" component={Cart} />
+        <Route path="/success" component={Success}></Route>
       </Switch>
     </HashRouter>
   );

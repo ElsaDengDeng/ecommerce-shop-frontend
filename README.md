@@ -26,6 +26,10 @@ TypeError: Cannot read properties of undefined (reading 'pathname')
 
 无域名
 
+### 存储共享状态的方式
+利用勾子函数和createContext API
+
+
 ## 电商项目说明
 
 ### 1. 技术栈

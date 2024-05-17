@@ -24,7 +24,7 @@ const CartItemFc: FC<Props> = ({ product, setCart }) => {
       </td>
       <td className="ant-table-cell">{product.name}</td>
       <td className="ant-table-cell">{product.price}</td>
-      <td className="ant-table-cell">{product.category.name}</td>
+      <td className="ant-table-cell">{product.category?.name}</td>
       <td className="ant-table-cell">
         <Input type="number" value={count} onChange={handleChange} />
       </td>

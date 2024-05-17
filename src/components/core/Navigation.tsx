@@ -5,24 +5,24 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../app/createRootReducer";
 import { RouterState } from "connected-react-router";
 import { isAuth } from "../../helpers/auth";
-import { Menu, MenuProps } from "antd";
+import { Badge, Menu, MenuProps } from "antd";
 import { Link } from "react-router-dom";
 import { Jwt } from "../../app/models/auth";
 import {
   SettingOutlined
 } from '@ant-design/icons';
+import { useTotal } from "../../app/anotherStore";
+import { itemCount } from "../../helpers/cart";
 
 const Navigation: React.FC = () => {
   const intl = useIntl(); // 获取翻译钩子
   const context = useContext(LocaleContext); // 获取上下文
+  const [count, setCount] = useTotal() // 获取购物车数量上下文
   if (!context) throw new Error("LocaleContext is missing");
 
   const router = useSelector<AppState, RouterState>((state) => state.router);
   const pathname = router.location.pathname;
   const [isAdmin, setIsAdmin] = useState(false); // 添加 isAdmin 状态
-  function useActive(currentPath: string, path: string): string {
-    return currentPath === path ? "ant-menu-item-selected" : ""; // 返回合适的字符串
-  }
   useEffect(() => {
     const auth = isAuth() as Jwt;
     if (auth && auth.user.role === 1) {
@@ -32,6 +32,9 @@ const Navigation: React.FC = () => {
     }
   }, [isAuth]); // 根据 `isAuth` 或其他依赖执行
 
+  useEffect(() => {
+    setCount(itemCount())
+  })
   const dashboardUrl = isAdmin ? "/admin/dashboard" : "/user/dashboard"; // 使用状态构造 URL
 
   console.log(pathname)
@@ -50,6 +53,7 @@ const Navigation: React.FC = () => {
       label: (
         <Link to="/shop">
           <FormattedMessage id="shopCentre" />
+          <Badge count={count} offset={[5, -10]}></Badge>
         </Link>
       ),
     },
